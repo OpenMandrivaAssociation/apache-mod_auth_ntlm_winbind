@@ -8,7 +8,7 @@
 Summary:	Enables the Apache Web Server to Authenticate Users against Microsoft like DCs
 Name:		apache-%{mod_name}
 Version:	0.0.0
-Release:	%mkrel 0.%{snap}.2
+Release:	%mkrel 0.%{snap}.3
 Group:		System/Servers
 License:	Apache License
 URL:		http://samba.org/
