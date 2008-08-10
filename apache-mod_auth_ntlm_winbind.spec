@@ -8,10 +8,10 @@
 Summary:	Enables the Apache Web Server to Authenticate Users against Microsoft like DCs
 Name:		apache-%{mod_name}
 Version:	0.0.0
-Release:	%mkrel 0.%{snap}.3
+Release:	%mkrel 0.%{snap}.4
 Group:		System/Servers
 License:	Apache License
-URL:		http://samba.org/
+URL:		http://adldap.sourceforge.net/wiki/doku.php?id=mod_auth_ntlm_winbind
 Source0:	%{mod_name}-%{version}-%{snap}.tar.gz
 Source1:	%{mod_conf}
 Requires(pre): rpm-helper
