@@ -8,16 +8,18 @@
 Summary:	Enables the Apache Web Server to Authenticate Users against Microsoft like DCs
 Name:		apache-%{mod_name}
 Version:	0.0.0
-Release:	%mkrel 0.%{snap}.4
+Release:	%mkrel 0.%{snap}.5
 Group:		System/Servers
 License:	Apache License
 URL:		http://adldap.sourceforge.net/wiki/doku.php?id=mod_auth_ntlm_winbind
 Source0:	%{mod_name}-%{version}-%{snap}.tar.gz
 Source1:	%{mod_conf}
+Patch0:		mod_auth_ntlm_winbind-20060510-connect_http10.diff
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
 Requires(pre):	apache-conf >= 2.2.0
 Requires(pre):	apache-mpm-prefork >= 2.2.0
+Requires:	samba-common
 Requires:	apache-conf >= 2.2.0
 Requires:	apache >= 2.2.0
 BuildRequires:	apache-devel >= 2.2.0
@@ -32,6 +34,7 @@ like Domain Controller (DC).  These are Microsoft NT/2000/XP and Samba.
 %prep
 
 %setup -q -n %{mod_name}
+%patch0 -p0
 
 cp %{SOURCE1} %{mod_conf}
 
