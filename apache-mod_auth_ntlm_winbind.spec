@@ -8,7 +8,7 @@
 Summary:	Enables the Apache Web Server to Authenticate Users against Microsoft like DCs
 Name:		apache-%{mod_name}
 Version:	0.0.0
-Release:	%mkrel 0.%{snap}.8
+Release:	%mkrel 0.%{snap}.9
 Group:		System/Servers
 License:	Apache License
 URL:		http://adldap.sourceforge.net/wiki/doku.php?id=mod_auth_ntlm_winbind
