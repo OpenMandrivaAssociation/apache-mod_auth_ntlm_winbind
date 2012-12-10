@@ -8,7 +8,7 @@
 Summary:	Enables the Apache Web Server to Authenticate Users against Microsoft like DCs
 Name:		apache-%{mod_name}
 Version:	0.0.0
-Release:	%mkrel 0.%{snap}.10
+Release:	0.%{snap}.10
 Group:		System/Servers
 License:	Apache License
 URL:		http://adldap.sourceforge.net/wiki/doku.php?id=mod_auth_ntlm_winbind
@@ -24,7 +24,6 @@ Requires:	apache-conf >= 2.2.0
 Requires:	apache >= 2.2.0
 BuildRequires:	apache-devel >= 2.2.0
 BuildRequires:	file
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 mod_auth_ntlm_winbind is an Apache module to authenticate users and
@@ -53,10 +52,9 @@ find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 
 %build
 
-%{_sbindir}/apxs -DAPACHE2 -c %{mod_name}.c
+%{_bindir}/apxs -DAPACHE2 -c %{mod_name}.c
 
 %install
-rm -rf %{buildroot}
 
 install -d %{buildroot}%{_sysconfdir}/httpd/modules.d
 install -d %{buildroot}%{_libdir}/apache-extramodules
@@ -77,10 +75,69 @@ if [ "$1" = "0" ]; then
 fi
 
 %clean
-rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root,-)
 %doc AUTHORS README
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/%{mod_conf}
 %attr(0755,root,root) %{_libdir}/apache-extramodules/%{mod_so}
+
+
+%changelog
+* Sat Feb 11 2012 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.10mdv2012.0
++ Revision: 772569
+- rebuild
+
+* Tue May 24 2011 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.9
++ Revision: 678265
+- mass rebuild
+
+* Sun Oct 24 2010 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.8mdv2011.0
++ Revision: 587923
+- rebuild
+
+* Mon Mar 08 2010 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.7mdv2010.1
++ Revision: 516049
+- rebuilt for apache-2.2.15
+
+* Sat Aug 01 2009 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.6mdv2010.0
++ Revision: 406539
+- rebuild
+
+* Sun Mar 22 2009 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.5mdv2009.1
++ Revision: 360275
+- fix deps
+- add the proxy patch (rediffed from contrib/)
+
+* Sun Aug 10 2008 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.4mdv2009.0
++ Revision: 270221
+- fix url
+
+* Mon Jul 14 2008 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.3mdv2009.0
++ Revision: 234662
+- rebuild
+
+* Thu Jun 05 2008 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.2mdv2009.0
++ Revision: 215534
+- fix rebuild
+
+* Sat May 10 2008 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r794.1mdv2009.0
++ Revision: 205372
+- new svn snap (r794)
+
+* Fri Mar 07 2008 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r781.2mdv2008.1
++ Revision: 181672
+- rebuild
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Sat Sep 29 2007 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r781.1mdv2008.1
++ Revision: 93833
+- import apache-mod_auth_ntlm_winbind
+
+
+* Sat Sep 29 2007 Oden Eriksson <oeriksson@mandriva.com> 0.0.0-0.r781.1mdv2008.0
+- initial Mandriva package
