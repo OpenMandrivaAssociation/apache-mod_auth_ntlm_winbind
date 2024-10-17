@@ -11,7 +11,7 @@ Version:	0.0.0
 Release:	0.%{snap}.10
 Group:		System/Servers
 License:	Apache License
-URL:		http://adldap.sourceforge.net/wiki/doku.php?id=mod_auth_ntlm_winbind
+URL:		https://adldap.sourceforge.net/wiki/doku.php?id=mod_auth_ntlm_winbind
 Source0:	%{mod_name}-%{version}-%{snap}.tar.gz
 Source1:	%{mod_conf}
 Patch0:		mod_auth_ntlm_winbind-20060510-connect_http10.diff
